@@ -1,0 +1,9 @@
+---
+# defaults file for grub
+
+grub_timeout: 5
+
+# Add options here, for example:
+# grub_options:
+#   - option: cgroup_enable
+#     value: memory

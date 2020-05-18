@@ -1,0 +1,13 @@
+---
+# vars file for grub
+_grub_packages:
+  default:
+    - grub2-efi
+
+grub_packages: "{{ _grub_packages[ansible_os_family] | default(_grub_packages['default']) }}"
+
+_grub_update_grub_command:
+  default: grub2-mkconfig -o /boot/grub2/grub.cfg
+  Debian: update-grub
+
+grub_update_grub_command: "{{ _grub_update_grub_command[ansible_os_family] | default(_grub_update_grub_command['default']) }}"

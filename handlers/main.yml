@@ -1,0 +1,12 @@
+---
+# handlers file for grub
+- name: update grub
+  command: "{{ grub_update_grub_command }}"
+  when:
+    - ansible_virtualization_type != "docker"
+    - ansible_virtualization_type != "container"
+  notify: 
+    - reboot
+
+- name: reboot
+  reboot:

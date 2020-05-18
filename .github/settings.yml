@@ -1,0 +1,7 @@
+---
+#
+# Ansible managed
+#
+repository:
+  description: Configure grub on your system.
+  homepage: https://robertdebock.nl/
