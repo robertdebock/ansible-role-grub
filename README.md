@@ -4,7 +4,7 @@ Configure grub on your system.
 
 |Travis|GitHub|Quality|Downloads|
 |------|------|-------|---------|
-|[![travis](https://travis-ci.com/robertdebock/ansible-role-grub.svg?branch=master)](https://travis-ci.com/robertdebock/ansible-role-grub)|[![github](https://github.com/robertdebock/ansible-role-grub/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-grub/actions)|[![quality](https://img.shields.io/ansible/quality/)](https://galaxy.ansible.com/robertdebock/grub)|[![downloads](https://img.shields.io/ansible/role/d/)](https://galaxy.ansible.com/robertdebock/grub)|
+|[![travis](https://travis-ci.com/robertdebock/ansible-role-grub.svg?branch=master)](https://travis-ci.com/robertdebock/ansible-role-grub)|[![github](https://github.com/robertdebock/ansible-role-grub/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-grub/actions)|[![quality](https://img.shields.io/ansible/quality/48762)](https://galaxy.ansible.com/robertdebock/grub)|[![downloads](https://img.shields.io/ansible/role/d/48762)](https://galaxy.ansible.com/robertdebock/grub)|
 
 ## Example Playbook
 
@@ -35,6 +35,10 @@ The machine may need to be prepared using `molecule/resources/prepare.yml`:
     - role: robertdebock.bootstrap
 
   tasks:
+    - name: make /etc/default
+      file:
+        path: /etc/default
+        state: directory
     - name: place bogus /etc/default/grub
       copy:
         content: 'GRUB_CMDLINE_LINUX="a=1"'
@@ -105,7 +109,7 @@ This role has been tested on these [container images](https://hub.docker.com/):
 |el|7, 8|
 |fedora|all|
 |opensuse|all|
-|ubuntu|all|
+|ubuntu|bionic, xenial, focal|
 
 The minimum version of Ansible required is 2.8 but tests have been done to:
 

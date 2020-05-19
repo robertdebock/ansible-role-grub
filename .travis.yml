@@ -24,10 +24,9 @@ env:
     - image="fedora" tag="latest"
     - image="fedora" tag="rawhide"
     - image="opensuse" tag="latest"
-    - image="ubuntu" tag="latest"
     - image="ubuntu" tag="bionic"
     - image="ubuntu" tag="xenial"
-    - image="ubuntu" tag="trusty"
+    - image="ubuntu" tag="latest"
 
 cache:
   - pip
