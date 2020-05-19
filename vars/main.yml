@@ -3,6 +3,8 @@
 _grub_packages:
   default:
     - grub2-efi
+  Debian:
+    - grub2
 
 grub_packages: "{{ _grub_packages[ansible_os_family] | default(_grub_packages['default']) }}"
 
