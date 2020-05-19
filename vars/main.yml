@@ -3,6 +3,8 @@
 _grub_packages:
   default:
     - grub2-efi
+  Alpine:
+    - grub
   Debian:
     - grub2
 
