@@ -3,8 +3,7 @@
 - name: update grub
   command: "{{ grub_update_grub_command }}"
   when:
-    - ansible_virtualization_type != "docker"
-    - ansible_virtualization_type != "container"
+    - ansible_connection != "docker"
   notify: 
     - reboot
 
