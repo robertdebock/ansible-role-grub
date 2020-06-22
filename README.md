@@ -21,6 +21,8 @@ This example is taken from `molecule/resources/converge.yml` and is tested on ea
       grub_options:
         - option: cgroup_enable
           value: memory
+        - option: systemd.unified_cgroup_hierarchy
+          value: 0
 ```
 
 The machine may need to be prepared using `molecule/resources/prepare.yml`:

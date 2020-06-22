@@ -9,3 +9,5 @@
       grub_options:
         - option: cgroup_enable
           value: memory
+        - option: systemd.unified_cgroup_hierarchy
+          value: 0
