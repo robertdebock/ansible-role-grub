@@ -4,7 +4,7 @@
   command: "{{ grub_update_grub_command }}"
   when:
     - ansible_connection != "docker"
-  notify: 
+  notify:
     - reboot
 
 - name: reboot
