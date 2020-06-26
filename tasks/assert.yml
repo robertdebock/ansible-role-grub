@@ -1,0 +1,25 @@
+---
+- name: test if grub_timeout is set correctly
+  assert:
+    that:
+      - grub_timeout is defined
+      - grub_timeout | int >= 0
+
+- name: test if grub_options is set correctly
+  assert:
+    that:
+      - grub_options | length > 0
+      - grub_options is iterable
+  when:
+    - grub_options is defined
+
+- name: test if item in grub_options is set correctly
+  assert:
+    that:
+      - item.option is defined
+      - item.option | length > 0
+      - item.value is defined
+      - item.value | length > 0
+  loop: "{{ grub_options }}"
+  when:
+    - grub_options is defined
