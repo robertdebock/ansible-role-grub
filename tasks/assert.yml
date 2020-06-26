@@ -19,7 +19,6 @@
       - item.option is defined
       - item.option | length > 0
       - item.value is defined
-      - item.value | length > 0
   loop: "{{ grub_options }}"
   when:
     - grub_options is defined
