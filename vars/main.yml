@@ -1,5 +1,6 @@
 ---
 # vars file for grub
+
 _grub_packages:
   default:
     - grub2-efi
