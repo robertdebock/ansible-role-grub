@@ -15,6 +15,7 @@
   lineinfile:
     path: /etc/default/grub
     line: GRUB_TIMEOUT={{ grub_timeout }}
+    create: yes
   notify:
     - update grub
 
