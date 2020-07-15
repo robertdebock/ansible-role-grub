@@ -21,5 +21,7 @@
       - item.value is defined
     quiet: yes
   loop: "{{ grub_options }}"
+  loop_control:
+    label: "{{ item.option }}"
   when:
     - grub_options is defined
