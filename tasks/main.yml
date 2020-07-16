@@ -7,9 +7,6 @@
   package:
     name: "{{ grub_packages }}"
     state: present
-  register: grub_install_required_packages
-  until: grub_install_required_packages is succeeded
-  retries: 3
 
 - name: set GRUB_TIMEOUT
   lineinfile:
