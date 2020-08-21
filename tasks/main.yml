@@ -11,10 +11,24 @@
 - name: set GRUB_TIMEOUT
   lineinfile:
     path: /etc/default/grub
+    regexp: '^GRUB_TIMEOUT'
     line: GRUB_TIMEOUT={{ grub_timeout }}
     create: yes
   notify:
     - update grub
+  when:
+    - grub_timeout is defined  
+
+- name: set GRUB_RECORDFAIL_TIMEOUT
+  lineinfile:
+    path: /etc/default/grub
+    regexp: '^GRUB_RECORDFAIL_TIMEOUT'
+    line: GRUB_RECORDFAIL_TIMEOUT={{ grub_timeout }}
+    create: yes
+  notify:
+    - update grub
+  when:
+    - grub_recordfail_timeout is defined
 
 - name: add options to GRUB_CMDLINE_LINUX
   replace:
