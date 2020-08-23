@@ -74,6 +74,8 @@ These variables are set in `defaults/main.yml`:
 
 grub_timeout: 5
 
+grub_recordfail_timeout: "{{ grub_timeout }}"
+
 # Add options here, for example:
 # grub_options:
 #   - option: cgroup_enable

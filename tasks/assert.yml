@@ -6,6 +6,13 @@
       - grub_timeout | int >= 0
     quiet: yes
 
+- name: test if grub_recordfail_timeout is set correctly
+  assert:
+    that:
+      - grub_recordfail_timeout is defined
+      - grub_recordfail_timeout | int >= 0
+    quiet: yes
+
 - name: test if grub_options is set correctly
   assert:
     that:

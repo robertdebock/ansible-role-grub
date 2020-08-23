@@ -16,6 +16,14 @@
   notify:
     - update grub
 
+- name: set GRUB_RECORDFAIL_TIMEOUT
+  lineinfile:
+    path: /etc/default/grub
+    line: GRUB_RECORDFAIL_TIMEOUT={{ grub_recordfail_timeout }}
+    create: yes
+  notify:
+    - update grub
+
 - name: add options to GRUB_CMDLINE_LINUX
   replace:
     path: /etc/default/grub
