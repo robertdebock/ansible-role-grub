@@ -12,7 +12,9 @@
       file:
         path: /etc/default
         state: directory
+        mode: "0755"
     - name: place bogus /etc/default/grub
       copy:
         content: 'GRUB_CMDLINE_LINUX="a=1"'
         dest: /etc/default/grub
+        mode: "0664"
