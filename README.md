@@ -41,10 +41,12 @@ The machine may need to be prepared using `molecule/resources/prepare.yml`:
       file:
         path: /etc/default
         state: directory
+        mode: "0755"
     - name: place bogus /etc/default/grub
       copy:
         content: 'GRUB_CMDLINE_LINUX="a=1"'
         dest: /etc/default/grub
+        mode: "0664"
 ```
 
 For verification `molecule/resources/verify.yml` runs after the role has been applied.
