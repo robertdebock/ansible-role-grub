@@ -4,7 +4,7 @@
     that:
       - grub_timeout is defined
       - grub_timeout is number
-      - grub_timeout | int >= 0
+      - grub_timeout >= 0
     quiet: yes
 
 - name: test if grub_recordfail_timeout is set correctly
@@ -12,7 +12,7 @@
     that:
       - grub_recordfail_timeout is defined
       - grub_recordfail_timeout is number
-      - grub_recordfail_timeout | int >= 0
+      - grub_recordfail_timeout >= 0
     quiet: yes
 
 - name: test if grub_options is set correctly
