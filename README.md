@@ -2,9 +2,9 @@
 
 Configure grub on your system.
 
-|Travis|GitHub|Quality|Downloads|Version|
-|------|------|-------|---------|-------|
-|[![travis](https://travis-ci.com/robertdebock/ansible-role-grub.svg?branch=master)](https://travis-ci.com/robertdebock/ansible-role-grub)|[![github](https://github.com/robertdebock/ansible-role-grub/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-grub/actions)|[![quality](https://img.shields.io/ansible/quality/48762)](https://galaxy.ansible.com/robertdebock/grub)|[![downloads](https://img.shields.io/ansible/role/d/48762)](https://galaxy.ansible.com/robertdebock/grub)|[![Version](https://img.shields.io/github/release/robertdebock/ansible-role-grub.svg)](https://github.com/robertdebock/ansible-role-grub/releases/)|
+|Travis|GitHub|GitLab|Quality|Downloads|Version|
+|------|------|------|-------|---------|-------|
+|[![travis](https://travis-ci.com/robertdebock/ansible-role-grub.svg?branch=master)](https://travis-ci.com/robertdebock/ansible-role-grub)|[![github](https://github.com/robertdebock/ansible-role-grub/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-grub/actions)|[![gitlab](https://gitlab.com/robertdebock/ansible-role-grub/badges/master/pipeline.svg)](https://gitlab.com/robertdebock/ansible-role-grub)|[![quality](https://img.shields.io/ansible/quality/48762)](https://galaxy.ansible.com/robertdebock/grub)|[![downloads](https://img.shields.io/ansible/role/d/48762)](https://galaxy.ansible.com/robertdebock/grub)|[![Version](https://img.shields.io/github/release/robertdebock/ansible-role-grub.svg)](https://github.com/robertdebock/ansible-role-grub/releases/)|
 
 ## [Example Playbook](#example-playbook)
 
