@@ -7,12 +7,12 @@
   delegate_to: localhost
 
 - name: install required packages
-  package:
+  ansible.builtin.package:
     name: "{{ grub_packages }}"
     state: present
 
 - name: set GRUB_TIMEOUT
-  lineinfile:
+  ansible.builtin.lineinfile:
     path: /etc/default/grub
     line: GRUB_TIMEOUT={{ grub_timeout }}
     create: yes
@@ -21,7 +21,7 @@
     - update grub
 
 - name: set GRUB_RECORDFAIL_TIMEOUT
-  lineinfile:
+  ansible.builtin.lineinfile:
     path: /etc/default/grub
     line: GRUB_RECORDFAIL_TIMEOUT={{ grub_recordfail_timeout }}
     create: yes
@@ -30,7 +30,7 @@
     - update grub
 
 - name: add options to GRUB_CMDLINE_LINUX
-  replace:
+  ansible.builtin.replace:
     path: /etc/default/grub
     regexp: '^GRUB_CMDLINE_LINUX="((:?(?!{{ item.option }}={{ item.value }}).)*?)"$'
     replace: 'GRUB_CMDLINE_LINUX="\1 {{ item.option }}={{ item.value }}"'
@@ -46,4 +46,4 @@
     - grub_options | length > 0
 
 - name: flush handlers
-  meta: flush_handlers
+  ansible.builtin.meta: flush_handlers

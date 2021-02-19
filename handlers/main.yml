@@ -9,4 +9,4 @@
     - reboot
 
 - name: reboot
-  reboot:
+  ansible.builtin.reboot:
