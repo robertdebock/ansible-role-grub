@@ -9,12 +9,12 @@
 
   tasks:
     - name: make /etc/default
-      file:
+      ansible.builtin.file:
         path: /etc/default
         state: directory
         mode: "0755"
     - name: place bogus /etc/default/grub
-      copy:
+      ansible.builtin.copy:
         content: 'GRUB_CMDLINE_LINUX="a=1"'
         dest: /etc/default/grub
         mode: "0664"
