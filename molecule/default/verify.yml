@@ -6,7 +6,9 @@
 
   tasks:
     - name: check that bogus options are in
-      command: grep 'a=1' /etc/default/grub
+      ansible.builtin.command:
+        cmd: grep 'a=1' /etc/default/grub
 
     - name: check that selected option is in
-      command: grep 'cgroup_enable=memory' /etc/default/grub
+      ansible.builtin.command:
+        cmd: grep 'cgroup_enable=memory' /etc/default/grub
