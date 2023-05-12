@@ -1,5 +1,5 @@
 ---
-- name: prepare
+- name: Prepare
   hosts: all
   become: yes
   gather_facts: no
@@ -8,13 +8,13 @@
     - role: robertdebock.bootstrap
 
   tasks:
-    - name: make /etc/default
+    - name: Make /etc/default
       ansible.builtin.file:
         path: /etc/default
         state: directory
         mode: "0755"
 
-    - name: place bogus /etc/default/grub
+    - name: Place bogus /etc/default/grub
       ansible.builtin.copy:
         content: 'GRUB_CMDLINE_LINUX="a=1"'
         dest: /etc/default/grub

@@ -5,10 +5,10 @@
   gather_facts: no
 
   tasks:
-    - name: check that bogus options are in
+    - name: Check that bogus options are in
       ansible.builtin.command:
         cmd: grep 'a=1' /etc/default/grub
 
-    - name: check that selected option is in
+    - name: Check that selected option is in
       ansible.builtin.command:
         cmd: grep 'cgroup_enable=memory' /etc/default/grub
