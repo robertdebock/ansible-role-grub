@@ -29,6 +29,7 @@
     that:
       - item.option is defined
       - item.option is string
+      - item.option is not none
       - item.value is defined
     quiet: yes
   loop: "{{ grub_options }}"
