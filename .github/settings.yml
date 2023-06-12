@@ -5,4 +5,4 @@
 repository:
   description: Configure grub on your system.
   homepage: https://robertdebock.nl/
-  topics: grub, ansible, molecule, tox, playbook
+  topics: grub, system, ansible, molecule, tox, playbook
