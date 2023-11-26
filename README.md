@@ -1,4 +1,4 @@
-# Ansible role [grub](#grub)
+# [Ansible role grub](#grub)
 
 Configure grub on your system.
 
