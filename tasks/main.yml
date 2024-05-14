@@ -46,7 +46,7 @@
     - grub_options is defined
     - grub_options | length > 0
 
-- name: import password.yml
+- name: Import password.yml
   ansible.builtin.import_tasks: password.yml
   when:
     - grub_set_password
