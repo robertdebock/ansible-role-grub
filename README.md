@@ -1,20 +1,21 @@
-# [grub](#grub)
+# [Ansible role grub](#grub)
 
 Configure grub on your system.
 
-|GitHub|GitLab|Quality|Downloads|Version|
-|------|------|-------|---------|-------|
-|[![github](https://github.com/robertdebock/ansible-role-grub/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-grub/actions)|[![gitlab](https://gitlab.com/robertdebock/ansible-role-grub/badges/master/pipeline.svg)](https://gitlab.com/robertdebock/ansible-role-grub)|[![quality](https://img.shields.io/ansible/quality/48762)](https://galaxy.ansible.com/robertdebock/grub)|[![downloads](https://img.shields.io/ansible/role/d/48762)](https://galaxy.ansible.com/robertdebock/grub)|[![Version](https://img.shields.io/github/release/robertdebock/ansible-role-grub.svg)](https://github.com/robertdebock/ansible-role-grub/releases/)|
+|GitHub|GitLab|Downloads|Version|
+|------|------|---------|-------|
+|[![github](https://github.com/robertdebock/ansible-role-grub/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-grub/actions)|[![gitlab](https://gitlab.com/robertdebock-iac/ansible-role-grub/badges/master/pipeline.svg)](https://gitlab.com/robertdebock-iac/ansible-role-grub)|[![downloads](https://img.shields.io/ansible/role/d/robertdebock/grub)](https://galaxy.ansible.com/robertdebock/grub)|[![Version](https://img.shields.io/github/release/robertdebock/ansible-role-grub.svg)](https://github.com/robertdebock/ansible-role-grub/releases/)|
 
 ## [Example Playbook](#example-playbook)
 
-This example is taken from `molecule/default/converge.yml` and is tested on each push, pull request and release.
+This example is taken from [`molecule/default/converge.yml`](https://github.com/robertdebock/ansible-role-grub/blob/master/molecule/default/converge.yml) and is tested on each push, pull request and release.
+
 ```yaml
 ---
 - name: Converge
   hosts: all
-  become: yes
-  gather_facts: yes
+  become: true
+  gather_facts: true
 
   roles:
     - role: robertdebock.grub
@@ -25,25 +26,26 @@ This example is taken from `molecule/default/converge.yml` and is tested on each
           value: 0
 ```
 
-The machine needs to be prepared. In CI this is done using `molecule/default/prepare.yml`:
+The machine needs to be prepared. In CI this is done using [`molecule/default/prepare.yml`](https://github.com/robertdebock/ansible-role-grub/blob/master/molecule/default/prepare.yml):
+
 ```yaml
 ---
-- name: prepare
+- name: Prepare
   hosts: all
-  become: yes
-  gather_facts: no
+  become: true
+  gather_facts: false
 
   roles:
     - role: robertdebock.bootstrap
 
   tasks:
-    - name: make /etc/default
+    - name: Make /etc/default
       ansible.builtin.file:
         path: /etc/default
         state: directory
         mode: "0755"
 
-    - name: place bogus /etc/default/grub
+    - name: Place bogus /etc/default/grub
       ansible.builtin.copy:
         content: 'GRUB_CMDLINE_LINUX="a=1"'
         dest: /etc/default/grub
@@ -54,7 +56,8 @@ Also see a [full explanation and example](https://robertdebock.nl/how-to-use-the
 
 ## [Role Variables](#role-variables)
 
-The default values for the variables are set in `defaults/main.yml`:
+The default values for the variables are set in [`defaults/main.yml`](https://github.com/robertdebock/ansible-role-grub/blob/master/defaults/main.yml):
+
 ```yaml
 ---
 # defaults file for grub
@@ -73,13 +76,13 @@ grub_recordfail_timeout: "{{ grub_timeout }}"
 
 - pip packages listed in [requirements.txt](https://github.com/robertdebock/ansible-role-grub/blob/master/requirements.txt).
 
-## [Status of used roles](#status-of-requirements)
+## [State of used roles](#state-of-used-roles)
 
 The following roles are used to prepare a system. You can prepare your system in another way.
 
 | Requirement | GitHub | GitLab |
 |-------------|--------|--------|
-|[robertdebock.bootstrap](https://galaxy.ansible.com/robertdebock/bootstrap)|[![Build Status GitHub](https://github.com/robertdebock/ansible-role-bootstrap/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-bootstrap/actions)|[![Build Status GitLab ](https://gitlab.com/robertdebock/ansible-role-bootstrap/badges/master/pipeline.svg)](https://gitlab.com/robertdebock/ansible-role-bootstrap)|
+|[robertdebock.bootstrap](https://galaxy.ansible.com/robertdebock/bootstrap)|[![Build Status GitHub](https://github.com/robertdebock/ansible-role-bootstrap/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-bootstrap/actions)|[![Build Status GitLab](https://gitlab.com/robertdebock-iac/ansible-role-bootstrap/badges/master/pipeline.svg)](https://gitlab.com/robertdebock-iac/ansible-role-bootstrap)|
 
 ## [Context](#context)
 
@@ -94,29 +97,27 @@ This role has been tested on these [container images](https://hub.docker.com/u/r
 
 |container|tags|
 |---------|----|
-|alpine|all|
-|el|8|
-|debian|all|
-|fedora|all|
-|opensuse|all|
-|ubuntu|all|
+|[Alpine](https://hub.docker.com/r/robertdebock/alpine)|all|
+|[EL](https://hub.docker.com/r/robertdebock/enterpriselinux)|8, 9|
+|[Debian](https://hub.docker.com/r/robertdebock/debian)|all|
+|[Fedora](https://hub.docker.com/r/robertdebock/fedora)|all|
+|[opensuse](https://hub.docker.com/r/robertdebock/opensuse)|all|
+|[Ubuntu](https://hub.docker.com/r/robertdebock/ubuntu)|all|
 
-The minimum version of Ansible required is 2.10, tests have been done to:
+The minimum version of Ansible required is 2.12, tests have been done to:
 
 - The previous version.
 - The current version.
 - The development version.
 
-
-
-If you find issues, please register them in [GitHub](https://github.com/robertdebock/ansible-role-grub/issues)
+If you find issues, please register them in [GitHub](https://github.com/robertdebock/ansible-role-grub/issues).
 
 ## [License](#license)
 
-Apache-2.0
+[Apache-2.0](https://github.com/robertdebock/ansible-role-grub/blob/master/LICENSE).
 
 ## [Author Information](#author-information)
 
-[Robert de Bock](https://robertdebock.nl/)
+[robertdebock](https://robertdebock.nl/)
 
 Please consider [sponsoring me](https://github.com/sponsors/robertdebock).
