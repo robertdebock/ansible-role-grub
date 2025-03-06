@@ -5,7 +5,7 @@
   gather_facts: true
 
   roles:
-    - role: ansible-role-grub
+    - role: robertdebock.grub
       grub_options:
         - option: cgroup_enable
           value: memory
