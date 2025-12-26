@@ -6,7 +6,7 @@
     cmd: "{{ grub_update_grub_command }}"
   changed_when: true
   when:
-    - ansible_connection not in [ "container", "docker", "community.docker.docker" ]
+    - ansible_connection not in [ "container", "docker", "community.docker.docker", "local" ]
   notify:
     - Reboot
 
