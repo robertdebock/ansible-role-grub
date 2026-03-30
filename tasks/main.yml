@@ -46,6 +46,11 @@
     - grub_options is defined
     - grub_options | length > 0
 
+- name: Import keymap.yml
+  ansible.builtin.import_tasks: keymap.yml
+  when:
+    - grub_set_keymap
+
 - name: Import password.yml
   ansible.builtin.import_tasks: password.yml
   when:
