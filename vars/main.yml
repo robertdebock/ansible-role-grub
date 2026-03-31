@@ -8,6 +8,9 @@ _grub_packages:
     - grub
   Debian:
     - grub2
+  RedHat:
+    - grub2-common
+    - grub2-tools-extra
 
 grub_packages: "{{ _grub_packages[ansible_facts['os_family']] | default(_grub_packages['default']) }}"
 
@@ -16,4 +19,16 @@ _grub_update_grub_command:
   Alpine: grub-mkconfig -o /boot/grub/grub.cfg
   Debian: update-grub
 
+_grub_boot_directory:
+  default: "/boot/grub"
+  Debian: "/boot/grub"
+  RedHat: "/boot/grub2"
+
+_grub_make_keyboard_layout_command:
+  default: "grub-kbdcomp -o /boot/grub/{{ grub_keyboard_lang }}.gkb {{ grub_keyboard_lang }}"
+  Debian: "grub-kbdcomp -o /boot/grub/{{ grub_keyboard_lang }}.gkb {{ grub_keyboard_lang }}"
+  RedHat: "zcat /usr/lib/kbd/keymaps/xkb/{{ grub_keyboard_lang }}-{{ grub_keyboard_layout }}.map.gz | grub2-mklayout -o /boot/grub2/{{ grub_keyboard_lang }}.gkb"
+
 grub_update_grub_command: "{{ _grub_update_grub_command[ansible_facts['os_family']] | default(_grub_update_grub_command['default']) }}"
+grub_make_keyboard_layout_command: "{{ _grub_make_keyboard_layout_command[ansible_facts['os_family']] | default(_grub_make_keyboard_layout_command['default']) }}"
+grub_boot_directory: "{{ _grub_boot_directory[ansible_facts['os_family']] | default(_grub_boot_directory['default']) }}"

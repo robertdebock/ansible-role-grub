@@ -2,9 +2,9 @@
 # tasks file for grub
 
 - name: keymap | Make keyboard layout file
-  ansible.builtin.command:
-    cmd: "grub-kbdcomp -o /boot/grub/{{ grub_keyboard_layout }}.gkb {{ grub_keyboard_layout }}"
-    creates: "/boot/grub/{{ grub_keyboard_layout }}.gkb"
+  ansible.builtin.shell:
+    cmd: "{{ grub_make_keyboard_layout_command }}"
+    creates: "{{ grub_boot_directory }}/{{ grub_keyboard_lang }}.gkb"
 
 - name: keymap | Set grub terminal input
   ansible.builtin.lineinfile:
@@ -25,8 +25,7 @@
     line: "{{ item.line }}"
   loop:
     - { regexp: 'insmod keylayouts', line: 'insmod keylayouts' }
-    - { regexp: 'keymap', line: 'keymap /boot/grub/{{ grub_keyboard_layout }}.gkb' }
+    - { regexp: 'keymap', line: 'keymap {{ grub_boot_directory }}/{{ grub_keyboard_lang }}.gkb' }
   notify:
     - Update grub
-
 
