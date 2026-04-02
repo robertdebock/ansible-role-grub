@@ -18,6 +18,7 @@ _grub_update_grub_command:
   default: grub2-mkconfig -o /boot/grub2/grub.cfg
   Alpine: grub-mkconfig -o /boot/grub/grub.cfg
   Debian: update-grub
+  RedHat: grub2-mkconfig -o /boot/grub2/grub.cfg
 
 _grub_boot_directory:
   default: "/boot/grub"
@@ -27,7 +28,7 @@ _grub_boot_directory:
 _grub_make_keyboard_layout_command:
   default: "grub-kbdcomp -o /boot/grub/{{ grub_keyboard_lang }}.gkb {{ grub_keyboard_lang }}"
   Debian: "grub-kbdcomp -o /boot/grub/{{ grub_keyboard_lang }}.gkb {{ grub_keyboard_lang }}"
-  RedHat: "zcat /usr/lib/kbd/keymaps/xkb/{{ grub_keyboard_lang }}-{{ grub_keyboard_layout }}.map.gz | grub2-mklayout -o /boot/grub2/{{ grub_keyboard_lang }}.gkb"
+  RedHat: "grub2-kbdcomp -o /boot/grub/{{ grub_keyboard_lang }}.gkb {{ grub_keyboard_lang }}"
 
 grub_update_grub_command: "{{ _grub_update_grub_command[ansible_facts['os_family']] | default(_grub_update_grub_command['default']) }}"
 grub_make_keyboard_layout_command: "{{ _grub_make_keyboard_layout_command[ansible_facts['os_family']] | default(_grub_make_keyboard_layout_command['default']) }}"
