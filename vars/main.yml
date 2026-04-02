@@ -21,7 +21,8 @@ _grub_update_grub_command:
   RedHat: grub2-mkconfig -o /boot/grub2/grub.cfg
 
 _grub_boot_directory:
-  default: "/boot/grub"
+  default: "/boot/grub2"
+  Alpine: "/boot/grub"
   Debian: "/boot/grub"
   RedHat: "/boot/grub2"
 
