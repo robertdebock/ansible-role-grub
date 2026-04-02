@@ -66,6 +66,9 @@ grub_timeout: 5
 
 grub_recordfail_timeout: "{{ grub_timeout }}"
 
+grub_set_keymap: false
+grub_keyboard_layout: de
+
 grub_set_password: false
 grub_user: root
 # grub_password = changeme
