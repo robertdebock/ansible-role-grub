@@ -1,6 +1,27 @@
 ---
 # handlers file for grub
 
+- name: Gather mount facts
+  ansible.builtin.setup:
+    gather_subset:
+      - "!all"
+      - "!min"
+      - mounts
+  when:
+    - ansible_facts.mounts is not defined
+  listen: Update grub
+
+- name: Remount /boot read-write
+  ansible.posix.mount:
+    path: /boot
+    state: remounted
+    opts: rw
+  register: grub_boot_remount_rw
+  when:
+    - ansible_facts.mounts | selectattr('mount', 'equalto', '/boot') | list | length > 0
+    - "'ro' in (ansible_facts.mounts | selectattr('mount', 'equalto', '/boot') | first).options | split(',')"
+  listen: Update grub
+
 - name: Update grub
   ansible.builtin.command:
     cmd: "{{ grub_update_grub_command }}"
@@ -9,6 +30,15 @@
     - ansible_connection not in [ "container", "docker", "community.docker.docker" ]
   notify:
     - Reboot
+
+- name: Remount /boot read-only
+  ansible.posix.mount:
+    path: /boot
+    state: remounted
+    opts: ro
+  when:
+    - grub_boot_remount_rw is not skipped
+  listen: Update grub
 
 - name: Reboot
   ansible.builtin.reboot:
