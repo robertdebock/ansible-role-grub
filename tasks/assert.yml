@@ -16,6 +16,13 @@
       - grub_recordfail_timeout >= 0
     quiet: true
 
+- name: assert | Test grub_reboot
+  ansible.builtin.assert:
+    that:
+      - grub_reboot is defined
+      - grub_reboot is boolean
+    quiet: true
+
 - name: assert | Test grub_options
   ansible.builtin.assert:
     that:
