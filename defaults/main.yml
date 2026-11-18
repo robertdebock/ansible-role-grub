@@ -5,6 +5,9 @@ grub_timeout: 5
 
 grub_recordfail_timeout: "{{ grub_timeout }}"
 
+# Reboot the system after grub has been updated.
+grub_reboot: true
+
 grub_set_password: false
 grub_user: root
 # grub_password = changeme
